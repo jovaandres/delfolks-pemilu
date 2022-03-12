@@ -13,10 +13,6 @@ const UserSchema = new mongoose.Schema(
       required: [true, "is required"],
       match: [/\S+@\S+\.\S+/, "is invalid"]
     },
-    isEmailConfirmed: {
-      type: Boolean,
-      default: false
-    },
     firstName: {
       type: String,
       required: [true, "is required"]
@@ -24,6 +20,32 @@ const UserSchema = new mongoose.Schema(
     lastName: {
       type: String,
       required: [true, "is required"]
+    },
+    dateOfBirth: {
+      type: Date,
+      required: false
+    },
+    generation: {
+      type: Number,
+      required: false,
+      min: 1,
+      max: 7
+    },
+    phoneNumber: {
+      type: String,
+      required: false,
+    },
+    nis: {
+      type: Number,
+      required: false
+    },
+    claimed: {
+      type: Boolean,
+      default: false
+    },
+    voted: {
+      type: Boolean,
+      default: false
     },
     salt: String,
     hash: String,

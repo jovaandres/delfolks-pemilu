@@ -5,6 +5,7 @@ import Dashboard from "@/pages/Dashboard";
 import SignInPage from "@/pages/SignInPage";
 import NotFound from "@/pages/NotFound";
 import store from "@/vuex";
+import VotingPage from "@/pages/VotingPage";
 
 const routes = [
   {
@@ -13,6 +14,15 @@ const routes = [
     component: Dashboard,
     meta: {
       title: "Dashboard",
+      requireAuth: true
+    }
+  },
+  {
+    name: "voting",
+    path: "/voting",
+    component: VotingPage,
+    meta: {
+      title: "Voting",
       requireAuth: true
     }
   },

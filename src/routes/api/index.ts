@@ -3,8 +3,10 @@ import {NextFunction, Request, Response, Router} from "express"
 const router = Router();
 
 import userRouter from "./users";
+import voteRouter from "./vote";
 
 router.use('/users', userRouter);
+router.use('/vote', voteRouter);
 
 router.use(function (err: any, req: Request, res: Response, next: NextFunction) {
 

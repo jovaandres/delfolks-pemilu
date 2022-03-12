@@ -44,8 +44,8 @@
           <router-link to="quiz">
             <button class="quiz-btn">Quiz</button>
           </router-link>
-          <router-link to="leaderboard">
-            <button class="leaderboard-btn">Leaderboard</button>
+          <router-link to="voting">
+            <button class="leaderboard-btn">Voting</button>
           </router-link>
           <button @click="createGame" class="create-btn">Create</button>
           <button @click="joinGame" class="create-btn">Join</button>
