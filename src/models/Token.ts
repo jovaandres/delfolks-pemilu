@@ -15,6 +15,6 @@ const TokenSchema = new mongoose.Schema(
   {timestamps: true}
 );
 
-const Token = mongoose.model("Vote", TokenSchema);
+const Token = mongoose.model("Token", TokenSchema);
 
 export = Token;

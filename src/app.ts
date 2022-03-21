@@ -13,7 +13,7 @@ dotenv.config()
 
 app.use(cors({
   origin: process.env.ORIGIN,
-  credentials: true
+  credentials: false
 }));
 
 const sixtyDaysInSeconds = 5184000

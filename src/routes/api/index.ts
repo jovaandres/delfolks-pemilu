@@ -4,9 +4,11 @@ const router = Router();
 
 import userRouter from "./users";
 import voteRouter from "./vote";
+import tokenRouter from "./token";
 
 router.use('/users', userRouter);
 router.use('/vote', voteRouter);
+router.use('/token', tokenRouter);
 
 router.use(function (err: any, req: Request, res: Response, next: NextFunction) {
 

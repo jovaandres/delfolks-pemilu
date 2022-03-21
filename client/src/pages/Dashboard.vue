@@ -1,32 +1,5 @@
 <template>
   <div class="dashboard">
-    <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
-    </transition>
-    <transition name="pop" appear>
-      <div class="modal" role="dialog" v-if="showModal">
-        <h3>{{ action }}</h3>
-        <p>Game Code</p>
-        <p>{{ quizCode }}</p>
-        <button @click="waiting">GO</button>
-      </div>
-    </transition>
-    <transition name="fade" appear>
-      <div class="modal-overlay" v-if="showModal2" @click="showModal2 = false"></div>
-    </transition>
-    <transition name="pop" appear>
-      <div class="modal" role="dialog" v-if="showModal2">
-        <h3>{{ action }}</h3>
-        <input
-          type="text"
-          class="text-field"
-          name="game-code"
-          placeholder="Game Code"
-          v-model="gameCode"
-        />
-        <button class="btn-join" @click="join" v-if="gameCode">GO</button>
-      </div>
-    </transition>
     <div class="dashboard-container" v-if="userAuth.isAuth">
       <button class="sign-out" @click.prevent="handleLogout">
         <i class="fas fa-door-open"></i>
@@ -37,23 +10,18 @@
           <div class="profile-img"></div>
           <div class="profile-content">
             <h2 class="name">{{ userAuth.user.firstName + " " + userAuth.user.lastName }}</h2>
-            <h2 v-if="rank + 1" class="rank">Rank #{{ rank }}</h2>
           </div>
         </div>
         <div class="quiz-content">
-          <router-link to="quiz">
-            <button class="quiz-btn">Quiz</button>
-          </router-link>
+          <button class="quiz-btn" @click="claimToken">Claim Token</button>
           <router-link to="voting">
             <button class="leaderboard-btn">Voting</button>
           </router-link>
-          <button @click="createGame" class="create-btn">Create</button>
-          <button @click="joinGame" class="create-btn">Join</button>
           <div class="highscore-box">
-            <h2>Highscore</h2>
+            <h2>NOTES</h2>
             <div class="score">
-              <h1 v-if="highScore + 1">{{ highScore }}</h1>
-              <p v-if="!(highScore + 1)">Take quiz to reveal rank</p>
+              <h1>DUNNO</h1>
+              <p>WUT</p>
             </div>
           </div>
         </div>
@@ -64,31 +32,15 @@
 
 <script>
 import store from "@/vuex";
-import { mapActions } from "vuex";
 
 export default {
   name: "dashboard",
-  data() {
-    return {
-      rank: 0,
-      highScore: 0,
-      showModal: false,
-      showModal2: false,
-      action: "",
-      quizCode: null,
-      gameCode: null
-    };
-  },
-  mounted() {
-    this.fetchData();
-  },
   computed: {
     userAuth() {
       return store.state.userAuth;
     }
   },
   methods: {
-    ...mapActions(["updateInitGame", "logout"]),
     handleLogout() {
       this.logout().then(() => {
         this.$nextTick().then(() => {
@@ -96,58 +48,19 @@ export default {
         });
       });
     },
-    fetchData() {
+    claimToken() {
       this.$http
-        ._post("/leaderboard/rank", { user: this.userAuth.user.id })
+        ._post("/token", { user: this.userAuth.user })
         .then(res => {
-          console.log(res);
-          this.rank = res.rank;
-          this.highScore = res.highScore;
+          if (!res.error) {
+            alert(res.token);
+          } else {
+            alert(res.message);
+          }
         })
         .catch(err => {
-          console.log(err.message);
+          alert(err.message);
         });
-    },
-    createGame() {
-      this.showModal = true;
-      this.action = "CREATE GAME";
-      this.$socket.emit("create", this.userAuth.user.id, data => {
-        this.quizCode = data.quizCode;
-
-        let gameData = {
-          roomId: this.quizCode,
-          isHost: true
-        };
-        this.updateInitGame(gameData);
-      });
-    },
-    waiting() {
-      this.$router.push({ name: "waiting" });
-    },
-    joinGame() {
-      this.action = "JOIN";
-      this.showModal2 = true;
-    },
-    join() {
-      const name = this.userAuth.user.firstName + " " + this.userAuth.user.lastName;
-      this.$socket.emit(
-        "join",
-        { name: name, userId: this.$socket.id, gameCode: this.gameCode },
-        data => {
-          if (data.success) {
-            this.$nextTick().then(() => {
-              let gameData = {
-                roomId: this.gameCode,
-                isHost: false
-              };
-              this.updateInitGame(gameData);
-              this.$router.push({ name: "waiting" });
-            });
-          } else {
-            window.alert(data.message);
-          }
-        }
-      );
     }
   }
 };

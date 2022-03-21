@@ -16,7 +16,16 @@
         </div>
       </div>
     </div>
-    <button class="button-26" :disabled="value === null" @click="vote">VOTE</button>
+    <input
+      type="text"
+      class="text-field"
+      name="token"
+      placeholder="Input Token"
+      v-model="inputToken"
+    />
+    <button class="button-26" :disabled="inputToken === null || value === null" @click="vote">
+      VOTE
+    </button>
   </div>
 </template>
 
@@ -25,17 +34,29 @@ export default {
   name: "VotingPage",
   data() {
     return {
-      value: null
+      value: null,
+      inputToken: null
     };
   },
   methods: {
     vote() {
       this.$http
-        ._post("/vote", { choice: this.value })
-        .then(() => {})
+        ._post("/vote", { choice: this.value, token: this.inputToken })
+        .then(res => {
+          if (!res.error) {
+            alert("Success");
+            this.markTokenAsUsed();
+          } else {
+            alert(res.message);
+          }
+        })
         .catch(err => {
           alert(err.message);
         });
+    },
+    markTokenAsUsed() {
+      this.$http
+        ._post("/token/mark", { token: this.inputToken })
     }
   }
 };
