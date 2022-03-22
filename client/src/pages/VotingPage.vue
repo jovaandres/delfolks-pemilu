@@ -30,8 +30,15 @@
 </template>
 
 <script>
+import store from "@/vuex";
+
 export default {
   name: "VotingPage",
+  computed: {
+    userAuth() {
+      return store.state.userAuth;
+    }
+  },
   data() {
     return {
       value: null,
@@ -41,7 +48,7 @@ export default {
   methods: {
     vote() {
       this.$http
-        ._post("/vote", { choice: this.value, token: this.inputToken })
+        ._post("/vote", { choice: this.value, token: this.inputToken, user: this.userAuth.user })
         .then(res => {
           if (!res.error) {
             alert("Success");
