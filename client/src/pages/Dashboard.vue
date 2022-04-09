@@ -32,6 +32,7 @@
 
 <script>
 import store from "@/vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "dashboard",
@@ -41,6 +42,7 @@ export default {
     }
   },
   methods: {
+    ...mapActions(["logout"]),
     handleLogout() {
       this.logout().then(() => {
         this.$nextTick().then(() => {
