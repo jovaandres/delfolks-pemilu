@@ -1,5 +1,7 @@
 import {NextFunction, Request, Response} from "express";
 import User from "../models/User";
+import * as XLSX from "xlsx";
+import path from "path";
 import {isBodyMissingProps} from "../utils/isBodyMissingProps";
 import userPassport from "../config/passport";
 
@@ -63,6 +65,30 @@ export = {
     },
   ],
 
+  generate: [
+    (req: Request, res: Response, next: NextFunction) => {
+      let filePath = path.resolve(__dirname,'dpt.xlsx');
+      let workbook = XLSX.readFile(filePath, { type: 'binary' , cellDates: true });
+      let sheet_name_list = workbook.SheetNames;
+      let data: any = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+      data.forEach((student: any) => {
+        let newUser: any = new User({
+          email: student.Email,
+          name: student.Nama,
+          dateOfBirth: student.TanggalLahir,
+          generation: student.Angkatan,
+          phoneNumber: student.NomorTelepon,
+          nis: student.NIS,
+        });
+        newUser.setPassword(student.NIS.toString());
+        newUser.save();
+      });
+      return res.json({
+        error: false,
+        message: "Import data success"
+      });
+    }
+  ],
   login: [
     (req: Request, res: Response, next: NextFunction) => {
       const requiredProps = [

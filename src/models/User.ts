@@ -13,31 +13,25 @@ const UserSchema = new mongoose.Schema(
       required: [true, "is required"],
       match: [/\S+@\S+\.\S+/, "is invalid"]
     },
-    firstName: {
-      type: String,
-      required: [true, "is required"]
-    },
-    lastName: {
+    name: {
       type: String,
       required: [true, "is required"]
     },
     dateOfBirth: {
       type: Date,
-      required: false
+      required: true
     },
     generation: {
-      type: Number,
-      required: false,
-      min: 1,
-      max: 7
+      type: String,
+      required: true,
     },
     phoneNumber: {
       type: String,
-      required: false,
+      required: true,
     },
     nis: {
       type: Number,
-      required: false
+      required: true
     },
     claimed: {
       type: Boolean,
@@ -89,9 +83,8 @@ UserSchema.methods.authSerialize = function (accessToken = true) {
   return {
     id: this.id,
     email: this.email,
-    firstName: this.firstName,
-    lastName: this.lastName,
-    isEmailConfirmed: this.isEmailConfirmed,
+    name: this.name,
+    nis: this.nis,
     accessToken: (() => {
       if (!accessToken) {
         return undefined;

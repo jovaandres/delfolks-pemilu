@@ -33,9 +33,7 @@
       </div>
       <div class="right">
         <div class="img-holder">
-          <img src="@/images/homepage/p1.png" alt="Code" class="code1" />
-          <img src="@/images/homepage/p2.png" alt="Code" class="code2" />
-          <div class="img-blur"></div>
+          <img src="../images/homepage/kayes.jpg" alt="gatau" />
         </div>
       </div>
     </div>
@@ -48,7 +46,7 @@ export default {
 </script>
 <style scoped>
 .home-page {
-  background-color: #bce5e1;
+  background: url("../images/background.webp");
   height: 100vh;
   width: 100vw;
   color: #eeeeee;
@@ -58,11 +56,11 @@ export default {
   justify-content: center;
 }
 .wrapper {
-  background-color: #222824;
+  background-color: rgba(162, 232, 243, 0.75);
   display: flex;
   width: 65vw;
   height: 80vh;
-  border-radius: 0.3rem;
+  border-radius: 4px;
   box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
 }
 .left {
@@ -84,7 +82,7 @@ export default {
   /* border: 1px solid white; */
 }
 h1 {
-  font-family: "Bowlby One SC";
+  font-family: "Bowlby One SC", sans-serif;
   font-size: 4em;
 }
 h1 span {
@@ -120,29 +118,16 @@ h1 span:hover {
 .sign-up:hover {
   box-shadow: 2px 2px 12px 1px #393e46;
 }
-.img-blur {
-  height: 100vh;
-  background: rgba(34, 40, 49, 0.3);
-  box-shadow: 0 -8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
 .img-holder {
   overflow: hidden;
   position: relative;
   height: 100%;
   width: 100%;
+  background-size: auto;
 }
-.code1 {
-  width: 35em;
-  position: absolute;
-  right: -10%;
-  top: -8%;
-}
-.code2 {
-  width: 32em;
-  position: absolute;
-  bottom: -8%;
-  left: -7%;
+
+.img-holder img {
+  width: 100%;
+  height: 100%;
 }
 </style>
