@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       required: true
     },
+    readNote: {
+      type: Boolean,
+      default: false
+    },
     claimed: {
       type: Boolean,
       default: false

@@ -19,6 +19,12 @@ export = {
     async function (req: Request, res: Response) {
       let userid = req.body.user.id;
       let user: any = await User.findById(userid);
+      if (!user.readNote) {
+        return res.json({
+          error: true,
+          message: "Read notes first!"
+        })
+      }
       if (!user.claimed) {
         let newToken = await generateToken();
         let token: any = new Token({

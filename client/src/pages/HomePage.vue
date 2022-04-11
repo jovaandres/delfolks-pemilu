@@ -54,9 +54,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Montserrat", sans-serif;
 }
 .wrapper {
-  background-color: rgba(162, 232, 243, 0.75);
+  background-color: rgba(96, 202, 218, 0.75);
   display: flex;
   width: 65vw;
   height: 80vh;

@@ -6,6 +6,7 @@ import SignInPage from "@/pages/SignInPage";
 import NotFound from "@/pages/NotFound";
 import store from "@/vuex";
 import VotingPage from "@/pages/VotingPage";
+import CalonPage from "@/pages/CalonPage";
 
 const routes = [
   {
@@ -23,6 +24,15 @@ const routes = [
     component: VotingPage,
     meta: {
       title: "Voting",
+      requireAuth: true
+    }
+  },
+  {
+    name: "calon",
+    path: "/calon",
+    component: CalonPage,
+    meta: {
+      title: "Calon",
       requireAuth: true
     }
   },

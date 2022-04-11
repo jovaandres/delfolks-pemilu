@@ -7,6 +7,40 @@
       <div class="modal" role="dialog" v-if="showModal">
         <h3>Token</h3>
         <p>{{ message }}</p>
+        <button @click="copyToken">COPY</button>
+      </div>
+    </transition>
+    <transition name="fade" appear>
+      <div class="modal-overlay" v-if="showNotes" @click="showNotes = false"></div>
+    </transition>
+    <transition name="pop" appear>
+      <div class="modal" role="dialog" v-if="showNotes">
+        <div class="note-title">
+          <h3>CATATAN</h3>
+        </div>
+        <div class="note-list">
+          <ol>
+            <li>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
+              magni cum asperiores.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
+              magni cum asperiores.
+            </li>
+            <li>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
+              magni cum asperiores.
+            </li>
+          </ol>
+        </div>
+        <div class="check-note">
+          <div class="checkbox-note">
+            <input id="checknotes" type="checkbox" v-model="checked" />
+            <label for="checknotes">Setuju pada catatan di atas</label>
+          </div>
+          <button class="acc-btn" :disabled="checked === false" @click="markNotes">Continue</button>
+        </div>
       </div>
     </transition>
     <div class="dashboard-container" v-if="userAuth.isAuth">
@@ -31,9 +65,9 @@
           <router-link to="voting">
             <button class="vote-btn">Voting</button>
           </router-link>
-          <button class="notes-btn" @click="claimToken">Read Notes</button>
-          <router-link to="voting">
-            <button class="add-btn">Voting</button>
+          <button class="notes-btn" @click="popUpNotes">Read Notes</button>
+          <router-link to="calon">
+            <button class="calon-btn">Lihat Calon</button>
           </router-link>
         </div>
       </div>
@@ -49,7 +83,9 @@ export default {
   name: "dashboard",
   data() {
     return {
+      checked: false,
       showModal: false,
+      showNotes: false,
       message: null
     };
   },
@@ -82,6 +118,24 @@ export default {
         .catch(err => {
           alert(err.message);
         });
+    },
+    popUpNotes() {
+      this.showNotes = true;
+    },
+    markNotes() {
+      this.$http._post("/users/read", { user: this.userAuth.user }).then(res => {
+        if (!res.error) {
+          this.showNotes = false;
+        }
+      });
+    },
+    async copyToken() {
+      try {
+        await navigator.clipboard.writeText(this.message);
+        alert("copied");
+      } catch ($e) {
+        alert("Cannot copy");
+      }
     }
   }
 };
@@ -97,6 +151,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 5em;
+  font-family: "Montserrat", sans-serif;
 }
 
 .dashboard-container {
@@ -195,7 +250,6 @@ export default {
   outline: none;
   transition: 0.15s ease-in-out;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
   color: white;
   border-radius: 2px;
 }
@@ -230,24 +284,23 @@ export default {
   transform: scale(1.05);
 }
 
-.add-btn {
+.calon-btn {
   background-color: #ffafcc;
 }
 
-.add-btn:hover {
+.calon-btn:hover {
   background-color: #00adb540;
   box-shadow: 2px 2px 12px 1px #393e46;
   transform: scale(1.05);
 }
 
 .modal {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   margin: auto;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   width: 50vw;
   height: fit-content;
   max-width: 22em;
@@ -256,7 +309,37 @@ export default {
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
   background: #fff;
   z-index: 999;
-  transform: none;
+  gap: 1rem;
+}
+
+.modal .note-title {
+  font-weight: bold;
+}
+
+.modal .note-list {
+  margin-top: 1rem;
+}
+
+.modal .note-list ol li {
+  margin-top: 0.5rem;
+}
+
+.modal .check-note {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal .acc-btn {
+  color: white;
+  padding: 0.5rem 1rem;
+  background: #e52463;
+  outline-color: #e52463;
+  border-radius: 2px;
+}
+
+.modal .acc-btn:disabled {
+  background: palevioletred;
 }
 
 .modal h3 {

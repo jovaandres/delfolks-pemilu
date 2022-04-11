@@ -4,6 +4,7 @@ import * as XLSX from "xlsx";
 import path from "path";
 import {isBodyMissingProps} from "../utils/isBodyMissingProps";
 import userPassport from "../config/passport";
+import Token from "../models/Token";
 
 export = {
   create: [
@@ -66,7 +67,7 @@ export = {
   ],
 
   generate: [
-    (req: Request, res: Response, next: NextFunction) => {
+    (req: Request, res: Response) => {
       let filePath = path.resolve(__dirname,'dpt.xlsx');
       let workbook = XLSX.readFile(filePath, { type: 'binary' , cellDates: true });
       let sheet_name_list = workbook.SheetNames;
@@ -114,5 +115,15 @@ export = {
 
       return res.json({success: true, user: user.authSerialize()});
     })(req, res, next),
+  ],
+  markNotes: [
+    async function (req: Request, res: Response) {
+      let userid = req.body.user.id;
+      await User.findByIdAndUpdate(userid, {readNote: true});
+      res.json({
+        error: false,
+        message: "Note read"
+      })
+    }
   ]
 };

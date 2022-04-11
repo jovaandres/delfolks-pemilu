@@ -125,6 +125,7 @@ export default {
   display: flex;
   justify-content: center;
   padding: 5em;
+  font-family: "Montserrat", sans-serif;
 }
 
 .sign-up-container {

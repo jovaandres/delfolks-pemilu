@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="dashboard-container">
+      <h1>Surat Suara</h1>
       <div class="wrapper">
         <div class="candidate">
           <div class="candidate-1">
@@ -26,10 +27,19 @@
         </div>
         <div class="user-choice">
           <div class="form__group">
-            <input type="text" class="form__input" id="name" v-model="inputToken" placeholder="Token" />
-            <label for="name" class="form__label">Token</label>
+            <input
+              type="text"
+              class="form__input"
+              id="name"
+              v-model="inputToken"
+              placeholder="Token"
+            />
           </div>
-          <button class="button-26" :disabled="inputToken === null || value === null || value === ''" @click="vote">
+          <button
+            class="button-26"
+            :disabled="inputToken === null || value === null || value === ''"
+            @click="vote"
+          >
             VOTE
           </button>
         </div>
@@ -86,6 +96,7 @@ export default {
   display: flex;
   justify-content: center;
   padding: 5em;
+  font-family: "Montserrat", sans-serif;
 }
 
 .dashboard-container {
@@ -97,10 +108,18 @@ export default {
   border-radius: 4px;
   box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-container h1 {
+  color: white;
 }
 
 .wrapper {
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -154,19 +173,16 @@ input[type="radio"] {
 
 .user-choice {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
-.form__label {
-  font-family: "Roboto", sans-serif;
-  color: palevioletred;
-  font-size: 1rem;
-  display: block;
-  transition: all 0.3s;
-  transform: translateY(0rem);
+.form__group {
+  display: flex;
+  padding: 0;
+  margin: 0;
 }
 
 .form__input {
@@ -181,13 +197,6 @@ input[type="radio"] {
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
-}
-
-.form__input:placeholder-shown + .form__label {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transform: translateY(-4rem);
-  transform: translateY(-4rem);
 }
 
 .form__input:focus {
@@ -213,7 +222,6 @@ input[type="radio"] {
 }
 
 .button-26 {
-  appearance: button;
   background-color: palevioletred;
   border: 1px solid palevioletred;
   border-radius: 4px;

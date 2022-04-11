@@ -23,6 +23,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: #222831;
+  font-family: "Montserrat", sans-serif;
 }
 h1 {
   color: #fff;

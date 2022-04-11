@@ -6,6 +6,7 @@ import auth from "../../middlewares";
 
 userRouter.post('/', ...service.create);
 userRouter.post('/generate', ...service.generate)
+userRouter.post('/read', ...service.markNotes)
 
 userRouter.get('/', auth.requireAuthUser, function (req: any, res: Response) {
   return res.json({

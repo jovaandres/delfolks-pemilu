@@ -107,6 +107,7 @@ export default {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  font-family: "Montserrat", sans-serif;
   padding: 8em 5em;
 }
 
