@@ -9,10 +9,10 @@
           </div>
           <div class="Identitas">
             <div class="Nama">
-              <h1>Nama Calon</h1>
+              <h1>Leonard Hutagaol</h1>
             </div>
             <div class="Angkatan">
-              <h3>Angkatan</h3>
+              <h3>Angkatan 2</h3>
             </div>
           </div>
         </div>
@@ -23,8 +23,10 @@
             </div>
             <div class="Visi2">
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
-                magni cum asperiores.
+                Menjadi wadah perhimpunan alumni SMA Unggul Del yang profesional serta unggul,
+                memiliki jiwa nasionalisme, dan ikatan kekeluargaan yang 3M (MarTuhan, MarRoha,
+                dan MarBisuk) untuk menyatakan gerakan dalam rangka kemajuan berbangsa dan
+                bernegara Indonesia.
               </p>
             </div>
           </div>
@@ -35,16 +37,23 @@
             <div class="Misi2">
               <ul class="Num">
                 <li>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde
-                  quis magni cum asperiores.
+                  1. Meningkatkan rasa cinta almamater dan menjunjung tinggi nama baik SMA Unggul Del 
                 </li>
                 <li>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde
-                  quis magni cum asperiores.
+                  2. Membina dan mengembangkan semangat kekeluargaan dan persatuan alumni SMA Unggul Del
+                  yang memiliki beragam profesi
                 </li>
                 <li>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde
-                  quis magni cum asperiores.
+                  3. Meningkatkan sumber daya manusia melalui konsolidasi komprehensif dalam implementasi
+                  3M (MarTuhan, MarRoha, dan MarBisuk)
+                </li>
+                <li>
+                  4. Membangun kerjasama dan bersinergi aktif dengan instansi SMA Unggul Del dalam
+                  informasi-informasi yang terkini, objektif, dan realistis
+                </li>
+                <li>
+                  5. Membantu kelancaran pendidikan melalui saran dan program nyata bagi kemajuan sekolah
+                  SMA Unggul Del
                 </li>
               </ul>
             </div>
