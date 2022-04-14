@@ -4,7 +4,12 @@ import * as XLSX from "xlsx";
 import path from "path";
 import {isBodyMissingProps} from "../utils/isBodyMissingProps";
 import userPassport from "../config/passport";
-import Token from "../models/Token";
+import transporter from "../utils/mailer";
+import crypto from "crypto";
+
+const generatePassword: any = async () => {
+  return crypto.randomBytes(3).toString('hex');
+}
 
 export = {
   create: [
@@ -65,13 +70,12 @@ export = {
         .catch(next);
     },
   ],
-
   generate: [
     (req: Request, res: Response) => {
       let filePath = path.resolve(__dirname,'dpt.xlsx');
       let workbook = XLSX.readFile(filePath, { type: 'binary' , cellDates: true });
       let sheet_name_list = workbook.SheetNames;
-      let data: any = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+      let data: any = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[1]]);
       data.forEach((student: any) => {
         let newUser: any = new User({
           email: student.Email,
@@ -81,13 +85,36 @@ export = {
           phoneNumber: student.NomorTelepon,
           nis: student.NIS,
         });
-        newUser.setPassword(student.NIS.toString());
         newUser.save();
       });
       return res.json({
         error: false,
         message: "Import data success"
       });
+    }
+  ],
+  setPasswordAndSend: [
+    async function (req: Request, res: Response) {
+      let userdata = await User.find({}).limit(1).select('email');
+      userdata.forEach(async (data: any) => {
+        console.log(data.email);
+        let newPassword = await generatePassword();
+        let newSalt = crypto.randomBytes(16).toString("hex");
+        let newHash = crypto
+          .pbkdf2Sync(newPassword, newSalt, 10000, 512, "sha512")
+          .toString("hex");
+        await User.findByIdAndUpdate(data.id, {salt: newSalt, hash: newHash}, {upsert: true});
+        transporter.sendMail({
+          from: '"Jova Andreas" admin@delfolks.my.id',
+          to: data.email,
+          subject: "Your password for pemilu delfolks",
+          html: "<p>Terimakasih telah mendaftar sebagai pemilih tetap pemilu Del Folks 2022. Email ini dikirim otomatis ketika pendaftaran berhasil. Password akun anda akan dikirimkan bersama dengan email ini</p><br><strong>Your password: " + newPassword +"</strong>"
+        })
+      })
+      return res.json({
+        error: false,
+        message: "Password generated successfully"
+      })
     }
   ],
   login: [

@@ -10,8 +10,7 @@ const UserSchema = new mongoose.Schema(
       lowercase: true,
       unique: true,
       index: true,
-      required: [true, "is required"],
-      match: [/\S+@\S+\.\S+/, "is invalid"]
+      required: [true, "is required"]
     },
     name: {
       type: String,
@@ -47,7 +46,7 @@ const UserSchema = new mongoose.Schema(
     },
     salt: String,
     hash: String,
-    suspended: {type: Boolean, default: false}
+    suspended: {type: Boolean, default: true}
   },
   {timestamps: true}
 );
