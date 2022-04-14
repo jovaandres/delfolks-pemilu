@@ -2,6 +2,16 @@
   <div class="dashboard">
     <div class="dashboard-container">
       <h1>Surat Suara</h1>
+      <transition name="fade" appear>
+        <div class="modal-overlay" v-if="showModal"></div>
+      </transition>
+      <transition name="pop" appear>
+        <div class="modal" role="dialog" v-if="showModal">
+          <h3>Alert</h3>
+          <p>{{ message }}</p>
+          <button class="ok-btn" @click="toHome">OK</button>
+        </div>
+      </transition>
       <div class="wrapper">
         <div class="candidate">
           <div class="candidate-1">
@@ -61,7 +71,9 @@ export default {
   data() {
     return {
       value: null,
-      inputToken: null
+      inputToken: null,
+      message: null,
+      showModal: false
     };
   },
   methods: {
@@ -70,18 +82,24 @@ export default {
         ._post("/vote", { choice: this.value, token: this.inputToken, user: this.userAuth.user })
         .then(res => {
           if (!res.error) {
-            alert("Success");
             this.markTokenAsUsed();
+            this.showModal = true;
+            this.message = "Berhasil melakukan voting!";
           } else {
-            alert(res.message);
+            this.showModal = true;
+            this.message = res.message;
           }
         })
         .catch(err => {
-          alert(err.message);
+          this.showModal = true;
+          this.message = err.message;
         });
     },
     markTokenAsUsed() {
       this.$http._post("/token/mark", { token: this.inputToken });
+    },
+    toHome() {
+      return this.$router.push({ name: "home" });
     }
   }
 };
@@ -255,6 +273,52 @@ input[type="radio"] {
 .button-26:hover {
   background-color: #ff0c59;
   border-color: #ff0c59;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  width: 50vw;
+  height: fit-content;
+  max-width: 22em;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  z-index: 999;
+  gap: 1rem;
+}
+.modal .ok-btn {
+  color: white;
+  padding: 0.5rem 1rem;
+  background: #e52463;
+  outline-color: #e52463;
+  border-radius: 2px;
+}
+
+
+.modal h3 {
+  color: #2c3e50;
+}
+
+.modal p {
+  color: #2c3e50;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 998;
+  background: #2c3e50;
+  opacity: 0.6;
+  cursor: pointer;
 }
 @media only screen and (max-width: 650px) {
   .dashboard-container {

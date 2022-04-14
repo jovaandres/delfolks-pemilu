@@ -170,8 +170,8 @@ export default {
   display: flex;
   height: 100%;
   align-items: center;
-  justify-content: space-between;
-  gap: 5rem;
+  justify-content: center;
+  gap: 3rem;
 }
 
 .sign-out {
@@ -204,6 +204,7 @@ export default {
   background-color: rgba(27, 190, 166, 0.8);
   border-radius: 4px;
   box-shadow: 2px 2px 3px 2px rgba(255, 226, 226, 0.48);
+  padding: 1em;
 }
 
 .profile-img {
@@ -238,6 +239,7 @@ export default {
 .web-content {
   display: grid;
   align-items: center;
+  justify-items: center;
   grid-template-columns: 12.5em 12.5em;
   grid-column-gap: 15px;
   grid-row-gap: 15px;
@@ -364,6 +366,16 @@ export default {
   .dashboard-container {
     width: 70vw;
     padding: 2em 2em;
+  }
+  .profile-img {
+    width: 8em;
+    height: 8em;
+  }
+  .name {
+    font-size: 14px;
+  }
+  .nis {
+    font-size: 12px;
   }
   .web-content {
     grid-column-gap: 4px;

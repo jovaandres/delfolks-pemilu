@@ -118,14 +118,16 @@ export default {
   align-items: center;
   gap: 1.5rem;
 }
+.Foto {
+  padding: 4px;
+  background: white;
+}
 img {
-  border-radius: 8px;
   width: 210px;
   height: 280px;
 }
 .Identitas {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .Angkatan {
   color: gray;
