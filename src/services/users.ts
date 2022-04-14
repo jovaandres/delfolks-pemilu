@@ -6,6 +6,7 @@ import {isBodyMissingProps} from "../utils/isBodyMissingProps";
 import userPassport from "../config/passport";
 import transporter from "../utils/mailer";
 import crypto from "crypto";
+import Message from "../models/Message";
 
 const generatePassword: any = async () => {
   return crypto.randomBytes(3).toString('hex');
@@ -150,6 +151,34 @@ export = {
       res.json({
         error: false,
         message: "Note read"
+      })
+    }
+  ],
+  sendHelp: [
+    async function (req: Request, res: Response, next: NextFunction) {
+      const requiredProps = [
+        ['name', 'Your name is required', true],
+        ['email', 'Your email is required', true],
+        ['message', 'Your message is required', true],
+      ];
+      const {hasMissingProps, propErrors} = isBodyMissingProps(requiredProps, req.body);
+      if (hasMissingProps) {
+        return next({
+          name: "ValidationError",
+          errors: propErrors
+        });
+      }
+      let {name, email, message} = req.body;
+      let newMessage: any = new Message({
+        name: name,
+        email: email,
+        message: message
+      })
+      await newMessage.save();
+
+      res.json({
+        error: false,
+        message: "Pesan telah terkirim!"
       })
     }
   ]

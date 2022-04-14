@@ -1,111 +1,70 @@
 <template>
   <div class="sign-up-page">
-    <particle3 />
     <transition name="fade" appear>
       <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
     <transition name="pop" appear>
       <div class="modal" role="dialog" v-if="showModal">
-        <h3>{{ name }}</h3>
+        <h3>{{ title }}</h3>
         <p>{{ message }}</p>
       </div>
     </transition>
     <div class="sign-up-container">
       <div class="sign-up-box">
         <div class="sign-up-form">
-          <h1 class="sign-up-title">Sign up as user</h1>
+          <h1 class="sign-up-title">Chat admin</h1>
           <input
             type="text"
             class="text-field"
             name="first-name"
-            placeholder="First name"
-            v-model="userData.firstName"
+            placeholder="Nama"
+            v-model="nama"
           />
 
-          <input
-            type="text"
-            class="text-field"
-            name="last-name"
-            placeholder="Last name"
-            v-model="userData.lastName"
-          />
+          <input type="text" class="text-field" name="email" placeholder="Email" v-model="email" />
 
-          <input
-            type="text"
-            class="text-field"
-            name="email"
-            placeholder="Email"
-            v-model="userData.email"
-          />
+          <textarea name="pesan" placeholder="Tuliskan pesan" v-model="pesan" rows="5" />
 
-          <input
-            type="password"
-            class="text-field"
-            name="password"
-            placeholder="Password"
-            v-model="userData.password"
-          />
-
-          <button type="submit" class="button w-full" @click="onSubmit">
-            Create Account
+          <button type="submit" class="button w-full" @click="sendMsg">
+            Send Message
           </button>
-        </div>
-        <div class="link-sign-in mt-2">
-          Already have an account?
-          <router-link class="no-underline border-b border-blue-500 text-blue-500" to="/sign-in">
-            Sign in
-          </router-link>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
-import particle3 from "../components/particle3.vue";
-
 export default {
   name: "AuthPage",
-  components: { particle3 },
-  props: ["userAuth"],
   data() {
     return {
-      userData: {
-        email: "",
-        firstName: "",
-        lastName: "",
-        password: ""
-      },
-      name: "",
+      nama: "",
+      email: "",
+      pesan: "",
+      title: "",
       message: "",
       showModal: false
     };
   },
-  watch: {
-    userAuth: {
-      handler(val) {
-        if (val.isAuth) {
-          const redirectRouteName = this.$route.query.redirect || "home";
-          return this.$router.push({ name: redirectRouteName, query: this.$route.query });
-        }
-      },
-      immediate: true
-    }
-  },
   methods: {
-    ...mapActions(["updateUserAuth"]),
-    onSubmit() {
+    sendMsg() {
       this.$http
-        ._post("/users", this.userData)
-        .then(body => {
-          return this.updateUserAuth({
-            isAuth: true,
-            user: body.user
-          });
+        ._post("/users/sendMessage", {
+          name: this.nama,
+          email: this.email,
+          message: this.pesan
+        })
+        .then(res => {
+          this.showModal = true;
+          this.title = "Berhasil";
+          this.message = res.message;
+          this.nama = "";
+          this.email = "";
+          this.pesan = "";
         })
         .catch(err => {
           if (err.response) {
-            this.name = err.response.data.name;
+            this.title = err.response.data.name;
             this.message = err.response.data.errors || err.response.data.message;
             this.showModal = true;
           }
@@ -117,7 +76,7 @@ export default {
 
 <style scoped>
 .sign-up-page {
-  background-color: #222831;
+  background: url("../images/background.webp");
   height: 100vh;
   width: 100vw;
   color: #eeeeee;
@@ -131,15 +90,15 @@ export default {
 .sign-up-container {
   padding: 30px 4em;
   z-index: 2;
-  background-color: #393e4640;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 50px;
-  box-shadow: 5px 5px 40px #00adb550;
   position: relative;
   display: flex;
   height: 100%;
   align-items: center;
+  background: rgba(224, 223, 223, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(224, 223, 223, 0.3);
 }
 
 .sign-up-box {
@@ -150,6 +109,8 @@ export default {
 .sign-up-title {
   font-size: 28px;
   text-align: center;
+  color: white;
+  margin-bottom: 4rem;
 }
 
 .sign-up-form {
@@ -159,10 +120,18 @@ export default {
 }
 
 .sign-up-form input {
-  background-color: #393e46;
+  background-color: #fff1f9;
+  color: #463645;
   padding: 9px;
   outline: none;
   width: 20em;
+}
+
+.sign-up-form textarea {
+  color: #463645;
+  background-color: #fff1f9;
+  padding: 9px;
+  outline: none;
 }
 
 .sign-up-form input:-webkit-autofill,
@@ -179,14 +148,11 @@ export default {
   background-color: #00adb590;
   padding: 8px;
   outline: none;
+  margin-top: 2rem;
 }
 
 .sign-up-form button:hover {
   background-color: #00adb550;
-}
-
-.link-sign-in {
-  text-align: center;
 }
 
 .modal {
@@ -226,5 +192,25 @@ export default {
   background: #2c3e50;
   opacity: 0.6;
   cursor: pointer;
+}
+@media only screen and (max-width: 426px) {
+  .sign-up-container {
+    padding: 3em 2em;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .sign-up-box {
+    gap: 2rem;
+  }
+  .sign-up-title {
+    font-size: 20px;
+    margin-bottom: 2rem;
+  }
+  .sign-up-form input {
+    font-size: 12px;
+  }
+  .sign-up-form button {
+    font-size: 12px;
+  }
 }
 </style>

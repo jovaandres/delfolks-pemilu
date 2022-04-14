@@ -157,13 +157,13 @@ export default {
 .dashboard-container {
   padding: 10px 4em;
   z-index: 2;
-  background-color: rgba(162, 232, 243, 0.75);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 4px;
-  box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
   height: 100%;
   width: 60vw;
+  background: rgba(224, 223, 223, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(224, 223, 223, 0.3);
 }
 
 .inner-container {

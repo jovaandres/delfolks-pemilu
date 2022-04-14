@@ -1,6 +1,5 @@
 <template>
   <div class="sign-in-page">
-    <particle3 />
     <transition name="fade" appear>
       <div class="modal-overlay" v-if="showModal" @click="showModal = false"></div>
     </transition>
@@ -29,17 +28,9 @@
             placeholder="Password"
             v-model="userData.password"
           />
-
           <button type="submit" class="button w-full" @click="onSubmit">
             Sign In
           </button>
-        </div>
-
-        <div class="link-sign-up mt-2">
-          Don't have an account?
-          <router-link class="underline text-blue-500" to="/sign-up">
-            Sign up here
-          </router-link>
         </div>
       </div>
     </div>
@@ -47,10 +38,8 @@
 </template>
 <script>
 import { mapActions } from "vuex";
-import particle3 from "../components/particle3.vue";
 
 export default {
-  components: { particle3 },
   name: "SignInPage",
   props: ["userAuth"],
   data() {
@@ -100,7 +89,7 @@ export default {
 
 <style scoped>
 .sign-in-page {
-  background-color: #222831;
+  background: url("../images/background.webp");
   height: 100vh;
   width: 100vw;
   color: #eeeeee;
@@ -114,23 +103,27 @@ export default {
 .sign-in-container {
   padding: 6em 4em;
   z-index: 2;
-  background-color: #393e4640;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  box-shadow: 5px 5px 40px #00adb550;
   position: relative;
   display: flex;
   align-items: center;
+  background: rgba(193, 193, 193, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.9px);
+  -webkit-backdrop-filter: blur(3.9px);
+  border: 1px solid rgba(193, 193, 193, 0.3);
 }
 
 .sign-in-box {
   display: flex;
   flex-direction: column;
+  margin: 0 2rem;
 }
 
 .sign-in-title {
+  color: white;
   font-size: 28px;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .sign-in-form {
@@ -140,7 +133,9 @@ export default {
 }
 
 .sign-in-form input {
-  background-color: #393e46;
+  background-color: #fff1f9;
+  color: #7c617a;
+  font-weight: bold;
   padding: 9px;
   outline: none;
   width: 100%;
@@ -165,10 +160,6 @@ export default {
 
 .sign-in-form button:hover {
   background-color: #00adb550;
-}
-
-.link-sign-up {
-  text-align: center;
 }
 
 .modal {
@@ -209,6 +200,11 @@ export default {
   opacity: 0.6;
   cursor: pointer;
 }
+@media only screen and (max-width: 426px) {
+  .sign-in-container {
+    padding: 3em 2em;
+  }
+}
 @media only screen and (max-width: 360px) {
   .sign-in-box {
     gap: 2rem;
@@ -222,9 +218,6 @@ export default {
   }
   .sign-in-form button {
     font-size: 12px;
-  }
-  .link-sign-up {
-    font-size: 14px;
   }
 }
 </style>

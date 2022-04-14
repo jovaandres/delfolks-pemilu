@@ -94,16 +94,16 @@ export default {
 
 .dashboard-container {
   z-index: 2;
-  background-color: rgba(162, 232, 243, 0.75);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 4px;
-  box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: rgba(193, 193, 193, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.9px);
+  -webkit-backdrop-filter: blur(3.9px);
+  border: 1px solid rgba(193, 193, 193, 0.3);
 }
 
 .inner-container {
@@ -141,10 +141,10 @@ img {
   text-indent: 40px;
   text-align: justify;
   text-justify: inter-word;
-  font-size: 12px;
+  font-size: 14px;
 }
 .Misi2 {
-  font-size: 12px;
+  font-size: 14px;
   text-align: justify;
   text-justify: inter-word;
 }

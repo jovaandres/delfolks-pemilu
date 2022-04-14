@@ -16,12 +16,12 @@
         <div class="candidate">
           <div class="candidate-1">
             <div class="img-holder">
-              <img src="@/images/voting/candidate-1.jpg" alt="candidate-2" class="img-1" />
+              <img src="@/images/voting/leonard.jpg" alt="candidate-2" class="img-1" />
             </div>
           </div>
           <div class="candidate-2">
             <div class="img-holder">
-              <img src="@/images/voting/candidate-2.jpg" alt="candidate-2" class="img-2" />
+              <img src="@/images/voting/kotak-kosong.jpg" alt="candidate-2" class="img-2" />
             </div>
           </div>
         </div>
@@ -29,10 +29,10 @@
           <input type="radio" name="calon" id="number1" v-model="value" value="number1" />
           <input type="radio" name="calon" id="number2" v-model="value" value="number2" />
           <label for="number1" class="option number1">
-            <span>IU</span>
+            <span>Leonard</span>
           </label>
           <label for="number2" class="option number2">
-            <span>IU Juga</span>
+            <span>Kotak Kosong</span>
           </label>
         </div>
         <div class="user-choice">
@@ -120,20 +120,22 @@ export default {
 .dashboard-container {
   padding: 10px 4em;
   z-index: 2;
-  background-color: rgba(162, 232, 243, 0.75);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 4px;
-  box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: rgba(193, 193, 193, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.9px);
+  -webkit-backdrop-filter: blur(3.9px);
+  border: 1px solid rgba(193, 193, 193, 0.3);
 }
 
 .dashboard-container h1 {
   color: white;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .wrapper {
@@ -299,7 +301,6 @@ input[type="radio"] {
   outline-color: #e52463;
   border-radius: 2px;
 }
-
 
 .modal h3 {
   color: #2c3e50;

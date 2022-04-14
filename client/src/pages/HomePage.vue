@@ -26,22 +26,24 @@
           </router-link>
           <router-link to="sign-up">
             <button class="btn-link sign-up">
-              Sign Up
+              Chat Admin
             </button>
           </router-link>
         </div>
       </div>
       <div class="right">
-        <div class="img-holder">
-          <img src="../images/homepage/kayes.jpg" alt="gatau" />
-        </div>
+        <particle />
       </div>
     </div>
   </div>
 </template>
 <script>
+import particle from "@/components/particle";
 export default {
-  name: "HomePage"
+  name: "HomePage",
+  components: {
+    particle
+  }
 };
 </script>
 <style scoped>
@@ -57,12 +59,15 @@ export default {
   font-family: "Montserrat", sans-serif;
 }
 .wrapper {
-  background-color: rgba(96, 202, 218, 0.75);
   display: flex;
   width: 65vw;
   height: 80vh;
   border-radius: 4px;
-  box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
+  background: rgba(224, 223, 223, 0.17);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(224, 223, 223, 0.3);
 }
 .left {
   width: 65%;
@@ -73,12 +78,11 @@ export default {
 }
 .title {
   z-index: 2;
+  color: white;
 }
 .right {
-  background-color: #59abbe;
   width: 45%;
   position: relative;
-  /* border: 1px solid white; */
 }
 h1 {
   font-family: "Bowlby One SC", sans-serif;
@@ -95,6 +99,7 @@ h1 span:hover {
   display: flex;
   gap: 20px;
   z-index: 2;
+  color: white;
 }
 .btn-link {
   outline: none;
@@ -117,18 +122,6 @@ h1 span:hover {
 .sign-up:hover {
   box-shadow: 2px 2px 12px 1px #393e46;
 }
-.img-holder {
-  overflow: hidden;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background-size: auto;
-}
-
-.img-holder img {
-  width: 100%;
-  height: 100%;
-}
 
 @media only screen and (max-width: 1080px) {
   .left {
@@ -138,7 +131,7 @@ h1 span:hover {
     font-size: 3em;
   }
   .btn-link {
-    width: 8em;
+    width: 10em;
   }
 }
 @media only screen and (max-width: 800px) {

@@ -16,17 +16,17 @@ export default {
       window.particlesJS("particles-js", {
         particles: {
           number: {
-            value: 80,
+            value: 200,
             density: {
               enable: true,
-              value_area: 700
+              value_area: 400
             }
           },
           color: {
-            value: ["#00ADB5", "#FFF"]
+            value: ["#860382", "#c218b2", "#f132df", "#f572e2", "#ffe4f2"]
           },
           shape: {
-            type: "circle",
+            type: ["circle", "triangle", "polygon"],
             stroke: {
               width: 0,
               color: "#000"
@@ -46,7 +46,7 @@ export default {
             }
           },
           size: {
-            value: 4,
+            value: 3,
             random: true,
             anim: {
               enable: false,
@@ -56,25 +56,14 @@ export default {
             }
           },
           line_linked: {
-            enable: false,
-            distance: 150,
-            color: "#00ADB5",
-            opacity: 0.5,
-            width: 1
+            enable: false
           },
           move: {
             enable: true,
-            speed: 6,
-            direction: "none",
-            random: false,
-            straight: false,
+            speed: 10,
+            direction: "left",
             out_mode: "out",
-            bounce: false,
-            attract: {
-              enable: false,
-              rotateX: 600,
-              rotateY: 1200
-            }
+            straight: false
           }
         },
         interactivity: {
@@ -98,10 +87,9 @@ export default {
               }
             },
             bubble: {
-              distance: 400,
-              size: 40,
-              duration: 2,
-              opacity: 8,
+              distance: 200,
+              size: 20,
+              duration: 1,
               speed: 3
             },
             repulse: {
@@ -109,7 +97,7 @@ export default {
               duration: 0.4
             },
             push: {
-              particles_nb: 2
+              particles_nb: 10
             },
             remove: {
               particles_nb: 2
@@ -126,9 +114,9 @@ export default {
 <style scoped>
 #particles-js {
   position: fixed;
-  background: #222831;
-  height: 100vh;
-  width: 100vw;
+  background: transparent;
+  height: 100%;
+  width: 100%;
   right: 0;
   top: 0;
 }
