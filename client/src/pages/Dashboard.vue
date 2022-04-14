@@ -163,6 +163,7 @@ export default {
   border-radius: 4px;
   box-shadow: 5px 5px 8px 5px rgba(255, 226, 226, 0.48);
   height: 100%;
+  width: 60vw;
 }
 
 .inner-container {
@@ -195,7 +196,6 @@ export default {
 }
 
 .profile {
-  width: 18em;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -231,12 +231,11 @@ export default {
 
 .name {
   text-align: center;
-  font-size: 30px;
+  font-size: 24px;
   color: whitesmoke;
 }
 
 .web-content {
-  width: 25em;
   display: grid;
   align-items: center;
   grid-template-columns: 12.5em 12.5em;
@@ -360,5 +359,83 @@ export default {
   background: #2c3e50;
   opacity: 0.6;
   cursor: pointer;
+}
+@media only screen and (max-width: 1368px) {
+  .dashboard-container {
+    width: 70vw;
+    padding: 2em 2em;
+  }
+  .web-content {
+    grid-column-gap: 4px;
+    grid-row-gap: 4px;
+  }
+  .web-content button {
+    width: 9rem;
+    height: 6.75rem;
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .dashboard-container {
+    width: 80vw;
+    padding: 2em 2em;
+  }
+  .inner-container {
+    flex-direction: column;
+  }
+  .profile {
+    width: 10em;
+  }
+  .profile-img {
+    width: 5em;
+    height: 5em;
+  }
+  .name {
+    font-size: 12px;
+  }
+  .nis {
+    font-size: 10px;
+  }
+  .sign-out {
+    font-size: 12px;
+  }
+  .sign-out i {
+    font-size: 12px;
+  }
+  .web-content button {
+    height: 3rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .inner-container {
+    gap: 2rem;
+  }
+  .web-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .web-content button {
+    height: 2rem;
+    font-weight: normal;
+  }
+  .profile {
+    margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .modal {
+    width: 90vw;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .modal {
+    width: 90vw;
+  }
+  .modal .note-list {
+    font-size: 12px;
+  }
+  .modal .check-note {
+    font-size: 12px;
+  }
 }
 </style>

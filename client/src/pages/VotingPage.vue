@@ -256,4 +256,66 @@ input[type="radio"] {
   background-color: #ff0c59;
   border-color: #ff0c59;
 }
+@media only screen and (max-width: 650px) {
+  .dashboard-container {
+    padding: 10px 2em;
+  }
+  .candidate {
+    gap: 2rem;
+  }
+  .choice-wrapper {
+    gap: 2rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .img-1 {
+    width: 10rem;
+    height: 10rem;
+  }
+  .img-2 {
+    width: 10rem;
+    height: 10rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .dashboard {
+    align-items: center;
+    padding: 2em;
+  }
+  .dashboard-container {
+    height: 60vh;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .img-1 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .img-2 {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .dashboard-container {
+    padding: 1em;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .candidate {
+    gap: 1rem;
+  }
+  .choice-wrapper {
+    gap: 1rem;
+    font-size: 12px;
+  }
+  .form__input {
+    font-size: 12px;
+  }
+  .button-26 {
+    font-size: 12px;
+  }
+  .choice-wrapper .option span {
+    font-size: 12px;
+    color: #808080;
+  }
+}
 </style>

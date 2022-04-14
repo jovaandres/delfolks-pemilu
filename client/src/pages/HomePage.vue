@@ -67,11 +67,9 @@ export default {
 .left {
   width: 65%;
   display: flex;
-  height: 100vh;
   justify-content: center;
   padding-inline: 5em;
   flex-direction: column;
-  /* border: 1px solid white; */
 }
 .title {
   z-index: 2;
@@ -130,5 +128,51 @@ h1 span:hover {
 .img-holder img {
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (max-width: 1080px) {
+  .left {
+    padding-inline: 3em;
+  }
+  h1 {
+    font-size: 3em;
+  }
+  .btn-link {
+    width: 8em;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .left {
+    padding-inline: 2em;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  .btn-link {
+    width: 5em;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .left {
+    width: 100%;
+  }
+  .right {
+    display: none;
+  }
+  .btn-link {
+    width: 7em;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .wrapper {
+    width: 80vw;
+    height: 40vh;
+  }
+  .left {
+    padding-inline: 1.5em;
+    gap: 1.5rem;
+  }
 }
 </style>

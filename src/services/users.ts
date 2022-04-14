@@ -95,7 +95,7 @@ export = {
   ],
   setPasswordAndSend: [
     async function (req: Request, res: Response) {
-      let userdata = await User.find({}).limit(1).select('email');
+      let userdata = await User.find().limit(1).select('email');
       userdata.forEach(async (data: any) => {
         console.log(data.email);
         let newPassword = await generatePassword();
@@ -103,7 +103,7 @@ export = {
         let newHash = crypto
           .pbkdf2Sync(newPassword, newSalt, 10000, 512, "sha512")
           .toString("hex");
-        await User.findByIdAndUpdate(data.id, {salt: newSalt, hash: newHash}, {upsert: true});
+        await User.findByIdAndUpdate(data.id, {salt: newSalt, hash: newHash, suspended: false}, {upsert: true});
         transporter.sendMail({
           from: '"Jova Andreas" admin@delfolks.my.id',
           to: data.email,

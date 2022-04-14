@@ -107,21 +107,19 @@ export default {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: "Montserrat", sans-serif;
-  padding: 8em 5em;
 }
 
 .sign-in-container {
-  padding: 10px 4em;
+  padding: 6em 4em;
   z-index: 2;
   background-color: #393e4640;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border-radius: 50px;
   box-shadow: 5px 5px 40px #00adb550;
   position: relative;
   display: flex;
-  height: 100%;
   align-items: center;
 }
 
@@ -145,7 +143,7 @@ export default {
   background-color: #393e46;
   padding: 9px;
   outline: none;
-  width: 20em;
+  width: 100%;
 }
 
 .sign-in-form input:-webkit-autofill,
@@ -162,6 +160,7 @@ export default {
   background-color: #00adb590;
   padding: 8px;
   outline: none;
+  width: 100%;
 }
 
 .sign-in-form button:hover {
@@ -209,5 +208,23 @@ export default {
   background: #2c3e50;
   opacity: 0.6;
   cursor: pointer;
+}
+@media only screen and (max-width: 360px) {
+  .sign-in-box {
+    gap: 2rem;
+  }
+  .sign-in-title {
+    font-size: 20px;
+    margin-bottom: 2rem;
+  }
+  .sign-in-form input {
+    font-size: 12px;
+  }
+  .sign-in-form button {
+    font-size: 12px;
+  }
+  .link-sign-up {
+    font-size: 14px;
+  }
 }
 </style>

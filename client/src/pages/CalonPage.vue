@@ -1,9 +1,9 @@
 <template>
   <div class="dashboard">
     <div class="dashboard-container">
-      <h1>Calon Nomor 1</h1>
       <div class="inner-container">
         <div class="calon">
+          <h1>Calon Nomor 1</h1>
           <div class="Foto">
             <img src="@/images/calon/calon.jpg" alt="calon" />
           </div>
@@ -24,9 +24,9 @@
             <div class="Visi2">
               <p>
                 Menjadi wadah perhimpunan alumni SMA Unggul Del yang profesional serta unggul,
-                memiliki jiwa nasionalisme, dan ikatan kekeluargaan yang 3M (MarTuhan, MarRoha,
-                dan MarBisuk) untuk menyatakan gerakan dalam rangka kemajuan berbangsa dan
-                bernegara Indonesia.
+                memiliki jiwa nasionalisme, dan ikatan kekeluargaan yang 3M (MarTuhan, MarRoha, dan
+                MarBisuk) untuk menyatakan gerakan dalam rangka kemajuan berbangsa dan bernegara
+                Indonesia.
               </p>
             </div>
           </div>
@@ -37,23 +37,24 @@
             <div class="Misi2">
               <ul class="Num">
                 <li>
-                  1. Meningkatkan rasa cinta almamater dan menjunjung tinggi nama baik SMA Unggul Del 
+                  1. Meningkatkan rasa cinta almamater dan menjunjung tinggi nama baik SMA Unggul
+                  Del
                 </li>
                 <li>
-                  2. Membina dan mengembangkan semangat kekeluargaan dan persatuan alumni SMA Unggul Del
-                  yang memiliki beragam profesi
+                  2. Membina dan mengembangkan semangat kekeluargaan dan persatuan alumni SMA Unggul
+                  Del yang memiliki beragam profesi
                 </li>
                 <li>
-                  3. Meningkatkan sumber daya manusia melalui konsolidasi komprehensif dalam implementasi
-                  3M (MarTuhan, MarRoha, dan MarBisuk)
+                  3. Meningkatkan sumber daya manusia melalui konsolidasi komprehensif dalam
+                  implementasi 3M (MarTuhan, MarRoha, dan MarBisuk)
                 </li>
                 <li>
                   4. Membangun kerjasama dan bersinergi aktif dengan instansi SMA Unggul Del dalam
                   informasi-informasi yang terkini, objektif, dan realistis
                 </li>
                 <li>
-                  5. Membantu kelancaran pendidikan melalui saran dan program nyata bagi kemajuan sekolah
-                  SMA Unggul Del
+                  5. Membantu kelancaran pendidikan melalui saran dan program nyata bagi kemajuan
+                  sekolah SMA Unggul Del
                 </li>
               </ul>
             </div>
@@ -107,14 +108,14 @@ export default {
 
 .inner-container {
   display: flex;
-  height: 80%;
   align-items: center;
-  gap: 5rem;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .calon {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1.5rem;
 }
 img {
@@ -131,18 +132,47 @@ img {
 }
 .Isi {
   text-align: left;
-  width: 50%;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 60%;
   line-height: 2.5;
 }
 .Visi2 {
   text-indent: 40px;
-  color: gray;
+  text-align: justify;
+  text-justify: inter-word;
   font-size: 12px;
 }
 .Misi2 {
-  color: gray;
-  line-height: 3;
   font-size: 12px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+@media only screen and (max-width: 1280px) {
+  .Isi {
+    line-height: 1.75;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .Isi {
+    line-height: 1.25;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .dashboard {
+    align-items: normal;
+    justify-content: normal;
+    height: auto;
+  }
+  .dashboard-container {
+    align-items: normal;
+    justify-content: normal;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .inner-container {
+    flex-direction: column;
+  }
+  .Isi {
+    line-height: 2;
+  }
 }
 </style>
