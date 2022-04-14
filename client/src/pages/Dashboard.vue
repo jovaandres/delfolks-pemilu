@@ -7,7 +7,7 @@
       <div class="modal" role="dialog" v-if="showModal">
         <h3>Token</h3>
         <p>{{ message }}</p>
-        <button @click="copyToken">COPY</button>
+        <button class="cp-btn" @click="copyToken">{{ copy }}</button>
       </div>
     </transition>
     <transition name="fade" appear>
@@ -83,6 +83,7 @@ export default {
   name: "dashboard",
   data() {
     return {
+      copy: "COPY",
       checked: false,
       showModal: false,
       showNotes: false,
@@ -132,9 +133,9 @@ export default {
     async copyToken() {
       try {
         await navigator.clipboard.writeText(this.message);
-        alert("copied");
+        this.copy = "COPIED";
       } catch ($e) {
-        alert("Cannot copy");
+        this.copy = "COPY AGAIN";
       }
     }
   }
@@ -329,6 +330,14 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.modal .cp-btn {
+  color: white;
+  padding: 0.5rem 1rem;
+  background: #e52463;
+  outline-color: #e52463;
+  border-radius: 2px;
 }
 
 .modal .acc-btn {
