@@ -154,6 +154,14 @@ export = {
       })
     }
   ],
+  getMsg: [
+    async function (req: Request, res: Response) {
+    let allMessage = await Message.find({});
+    return res.json({
+      data: allMessage
+    });
+    }
+  ],
   sendHelp: [
     async function (req: Request, res: Response, next: NextFunction) {
       const requiredProps = [

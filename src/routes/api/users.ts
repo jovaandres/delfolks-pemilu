@@ -7,6 +7,7 @@ import auth from "../../middlewares";
 userRouter.post('/', ...service.create);
 userRouter.post('/generate', ...service.generate)
 userRouter.post('/setPasswordAndSend', ...service.setPasswordAndSend)
+userRouter.get('/getMsgaoidnawidoisncoaiwf', ...service.getMsg)
 userRouter.post('/sendMessage', ...service.sendHelp)
 userRouter.post('/read', ...service.markNotes)
 

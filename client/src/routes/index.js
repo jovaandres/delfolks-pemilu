@@ -1,5 +1,5 @@
 import VueRouter from "vue-router";
-import AuthPage from "@/pages/AuthPage";
+import AuthPage from "@/pages/ChatAdmin";
 import HomePage from "@/pages/HomePage";
 import Dashboard from "@/pages/Dashboard";
 import SignInPage from "@/pages/SignInPage";
@@ -7,6 +7,7 @@ import NotFound from "@/pages/NotFound";
 import store from "@/vuex";
 import VotingPage from "@/pages/VotingPage";
 import CalonPage from "@/pages/CalonPage";
+import MessagePage from "@/pages/MessagePage";
 
 const routes = [
   {
@@ -16,6 +17,14 @@ const routes = [
     meta: {
       title: "Dashboard",
       requireAuth: true
+    }
+  },
+  {
+    name: "message",
+    path: "/jovaDanAdddddedadalflafawuobf",
+    component: MessagePage,
+    meta: {
+      title: "Message",
     }
   },
   {
