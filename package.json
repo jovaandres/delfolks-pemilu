@@ -2,6 +2,9 @@
   "name": "cto-project",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "start": "node built/src/bin/www.js",
     "build": "tsc",

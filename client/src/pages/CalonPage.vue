@@ -46,7 +46,7 @@
                 </li>
                 <li>
                   3. Meningkatkan sumber daya manusia melalui konsolidasi komprehensif dalam
-                  implementasi 3M (MarTuhan, MarRoha, dan MarBisuk)
+                  implementasi 3M (MarTuhan, MarRoha, dan MarBisuk
                 </li>
                 <li>
                   4. Membangun kerjasama dan bersinergi aktif dengan instansi SMA Unggul Del dalam
@@ -175,6 +175,11 @@ img {
   }
   .Isi {
     line-height: 2;
+  }
+}
+@media only screen and (max-width: 360px) {
+  .dashboard {
+    padding: 1em;
   }
 }
 </style>

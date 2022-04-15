@@ -21,16 +21,14 @@
         <div class="note-list">
           <ol>
             <li>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
-              magni cum asperiores.
+              1. Untuk melakukan voting, setiap pemilih tetap diharuskan untuk melakukan claim token
+              dengan menekan tombol <b>Claim Token</b> pada dashboard. Token tersebut akan digunakan
+              sebagai syarat agar hasil voting yang diberikan valid.
             </li>
             <li>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
-              magni cum asperiores.
-            </li>
-            <li>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem impedit unde quis
-              magni cum asperiores.
+              2. Proses klaim token hanya dapat dilakukan satu kali. Harap langsung menyalin token
+              yang muncul dengan menekan tombol COPY. Sebaiknya, token yang telah tersalin pada
+              clipboard diingat atau di-screenshot karena hanya akan ditampilkan satu kali.
             </li>
           </ol>
         </div>
