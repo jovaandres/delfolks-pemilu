@@ -35,7 +35,7 @@
 </template>
 <script>
 export default {
-  name: "AuthPage",
+  name: "ChatAdmin",
   data() {
     return {
       nama: "",

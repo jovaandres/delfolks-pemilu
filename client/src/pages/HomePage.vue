@@ -24,8 +24,8 @@
               Sign In
             </button>
           </router-link>
-          <router-link to="sign-up">
-            <button class="btn-link sign-up">
+          <router-link to="chat-admin">
+            <button class="btn-link chat-admin">
               Chat Admin
             </button>
           </router-link>
@@ -116,10 +116,10 @@ h1 span:hover {
   /* background-color: #14898f; */
   box-shadow: 2px 2px 12px 1px #393e46;
 }
-.sign-up {
+.chat-admin {
   border: 1px solid #00adb585;
 }
-.sign-up:hover {
+.chat-admin:hover {
   box-shadow: 2px 2px 12px 1px #393e46;
 }
 

@@ -1,5 +1,5 @@
 import VueRouter from "vue-router";
-import AuthPage from "@/pages/ChatAdmin";
+import ChatAdmin from "@/pages/ChatAdmin";
 import HomePage from "@/pages/HomePage";
 import Dashboard from "@/pages/Dashboard";
 import SignInPage from "@/pages/SignInPage";
@@ -24,7 +24,7 @@ const routes = [
     path: "/jovaDanAdddddedadalflafawuobf",
     component: MessagePage,
     meta: {
-      title: "Message",
+      title: "Message"
     }
   },
   {
@@ -55,9 +55,9 @@ const routes = [
     }
   },
   {
-    name: "sign-up",
-    path: "/sign-up",
-    component: AuthPage,
+    name: "chat-admin",
+    path: "/chat-admin",
+    component: ChatAdmin,
     meta: {
       title: "Sign Up",
       redirectDashboard: true
