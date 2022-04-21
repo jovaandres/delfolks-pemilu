@@ -59,7 +59,7 @@ const routes = [
     path: "/chat-admin",
     component: ChatAdmin,
     meta: {
-      title: "Sign Up",
+      title: "Chat Admin",
       redirectDashboard: true
     }
   },
