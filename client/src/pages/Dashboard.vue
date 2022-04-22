@@ -7,7 +7,14 @@
       <div class="modal" role="dialog" v-if="showModal">
         <h3>Token</h3>
         <p>{{ message }}</p>
-        <button class="cp-btn" @click="copyToken">{{ copy }}</button>
+        <button
+          class="cp-btn"
+          v-clipboard:copy="message"
+          v-clipboard:success="onCopy"
+          v-clipboard:error="onError"
+        >
+          {{ copy }}
+        </button>
       </div>
     </transition>
     <transition name="fade" appear>
@@ -128,13 +135,12 @@ export default {
         }
       });
     },
-    copyToken() {
-      try {
-        navigator.clipboard.writeText(this.message);
-        this.copy = "COPIED";
-      } catch ($e) {
-        this.copy = "COPY AGAIN";
-      }
+    onCopy: function() {
+      this.copy = "COPIED";
+    },
+    onError: function(e) {
+      this.copy = "COPY AGAIN";
+      console.log(e);
     }
   }
 };
