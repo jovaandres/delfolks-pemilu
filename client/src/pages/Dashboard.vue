@@ -128,9 +128,9 @@ export default {
         }
       });
     },
-    async copyToken() {
+    copyToken() {
       try {
-        await navigator.clipboard.writeText(this.message);
+        navigator.clipboard.writeText(this.message);
         this.copy = "COPIED";
       } catch ($e) {
         this.copy = "COPY AGAIN";
@@ -142,7 +142,7 @@ export default {
 
 <style scoped>
 .dashboard {
-  background: url("../images/background.webp");
+  background-color: #61b0b7;
   height: 100vh;
   width: 100vw;
   overflow: hidden;

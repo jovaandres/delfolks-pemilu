@@ -37,7 +37,7 @@ export default {
 </script>
 <style scoped>
 .home-page {
-  background: url("../images/background.webp");
+  background-color: #61b0b7;
   width: 100vw;
   color: #eeeeee;
   overflow: hidden;

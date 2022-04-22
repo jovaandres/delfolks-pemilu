@@ -26,7 +26,7 @@
           </router-link>
           <router-link to="chat-admin">
             <button class="btn-link chat-admin">
-              Chat Admin
+              Need Help?
             </button>
           </router-link>
         </div>
@@ -48,7 +48,7 @@ export default {
 </script>
 <style scoped>
 .home-page {
-  background: url("../images/background.webp");
+  background-color: #61b0b7;
   height: 100vh;
   width: 100vw;
   color: #eeeeee;

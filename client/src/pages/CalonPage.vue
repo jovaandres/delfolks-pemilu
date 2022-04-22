@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .dashboard {
-  background: url("../images/background.webp");
+  background-color: #61b0b7;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
